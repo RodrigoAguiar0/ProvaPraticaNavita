@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
-    android:layout_weight="match_parent"
     >
 
     <com.google.android.material.appbar.AppBarLayout
@@ -18,7 +17,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="@string/movies"
+            app:title="@string/toolbar_title"
             app:navigationIcon="?attr/homeAsUpIndicator"
             />
 
