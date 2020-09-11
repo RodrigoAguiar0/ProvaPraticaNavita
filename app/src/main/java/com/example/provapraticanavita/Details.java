@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * */
 public class Details extends AppCompatActivity {
 
-    private TextView movieTitle,movieGenre, movieDetailsDetails;
+    private TextView movieTitle,movieGenre, movieDetailsDetails, movieDetailsReview;
     private ImageView movieImage;
     private Toolbar detailsToolbar;
     private Movie movie;
@@ -44,6 +44,7 @@ public class Details extends AppCompatActivity {
         movieImage = findViewById(R.id.movie_detais_poster);
         movieGenre = findViewById(R.id.movie_details_genre);
         movieDetailsDetails = findViewById(R.id.movie_details_details);
+        movieDetailsReview = findViewById(R.id.movie_review);
         movie = (Movie) getIntent().getSerializableExtra("Movie");
 
         populateMovieDetails();
@@ -71,6 +72,9 @@ public class Details extends AppCompatActivity {
         movieGenre.setText("Gênero(s) - ".concat(genres));
 
         movieDetailsDetails.setText(movie.getOverview());
+
+        movieDetailsReview.setText("Nota média dos usuários: ".concat(movie.getVoteAverage()
+                .toString()));
     }
 
 }
