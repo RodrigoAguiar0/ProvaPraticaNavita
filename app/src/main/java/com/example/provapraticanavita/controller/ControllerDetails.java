@@ -10,7 +10,15 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-
+/**
+ * Essa classe é um controller que tem a funçao de controlar as informações de cada filme através da
+ * busca em uma lista contendo JSONs, criando o objeto e adicionando ele a uma lista de filmes, que
+ * será retornada ao método que o chamou
+ *
+ * @author Rodrigo Aguiar
+ * @since  09/09/2020
+ * @return movieList: Lista de filmes que foram adquiridos da base de dados através do Request.
+ * */
 public class ControllerDetails extends AppCompatActivity {
 
     private ArrayList <Movie> movieList = new ArrayList();

@@ -1,5 +1,7 @@
 package com.example.provapraticanavita;
 
+
+
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +14,13 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+/**
+ * Esta classe tem função de popular a tela activity_details fornecendo todos os detalhes que o
+ * filme que foi selecionado na activity_main possua.
+ *
+ * @author Rodrigo Aguiar
+ * @since  10/09/2020
+ * */
 public class Details extends AppCompatActivity {
 
     private TextView movieTitle,movieGenre, movieDetailsDetails;
@@ -19,6 +28,13 @@ public class Details extends AppCompatActivity {
     private Toolbar detailsToolbar;
     private Movie movie;
 
+    /**
+     * Contém comandos que devem ser realizados assim que essa interface gráfica é criada,
+     * capturando diversos itens da tela que serão modificados no momento da  insersão das \
+     * informações do filme selecionado pelo usuário.
+     *
+     * @param savedInstanceState: Busca o estado da aplicação caso ela já esteja em memória.
+     * */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +49,9 @@ public class Details extends AppCompatActivity {
         populateMovieDetails();
     }
 
+    /**
+     * Popula a tela de detalhes de filme com as informação do item selecionado.
+     * */
     public void populateMovieDetails(){
         String genres = "";
         movieTitle.setText(movie.getCurrentTitle());

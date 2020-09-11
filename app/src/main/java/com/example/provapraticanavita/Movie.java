@@ -12,7 +12,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-
+/**
+ * Esta é a classe modelo de filme, sendo cada objeto, um filme. Contém apenas o construtor vazio
+ * já que é o único necessário, e todos os getters e setters das informações de cada filme.
+ *
+ * @author Rodrigo Aguiar
+ * @since  09/09/2020
+ * */
 public class Movie extends AppCompatActivity implements Serializable {
 
     private Integer popularity, voteCount, voteAverage;
@@ -25,12 +31,6 @@ public class Movie extends AppCompatActivity implements Serializable {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-    }
-
-    public Movie(Integer popularity, Integer voteCount, String posterPath, int movieId,
-                 String backdropPath, String originalLanguage, String originalTitle,
-                 Integer[] genreId, String currentTitle, Integer voteAverage, String overview,
-                 String releaseDate){
     }
 
     public Movie(){
