@@ -1,10 +1,13 @@
 package com.example.provapraticanavita;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
+import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -48,13 +51,12 @@ public class MainActivity extends AppCompatActivity implements AbsListView.OnScr
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
-        listView = (ListView) findViewById(R.id.movies_list);
+        listView = findViewById(R.id.movies_list);
         controllerDetails = new ControllerDetails();
         movieList = new ArrayList();
         PopulateList(page);
         listView.setOnScrollListener(this);
     }
-
 
 
     private void PopulateList(int page){
@@ -65,9 +67,6 @@ public class MainActivity extends AppCompatActivity implements AbsListView.OnScr
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        if(movieList != null){
-
-                        }
                         try {
                             JSONArray jsonArray = response.getJSONArray("results");
                             movieList = controllerDetails.jsonParse(jsonArray);
@@ -88,7 +87,17 @@ public class MainActivity extends AppCompatActivity implements AbsListView.OnScr
 
     private void showMovieList(){
         movieAdapter = new MovieAdapter(this, movieList);
-        listView.setAdapter(movieAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Integer movieId = movieList.get(position).getMovieId();
+                Movie tempMovie = movieList.get(position);
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("Movie", tempMovie);
+                startActivity(intent);
+            }
+        });
+        listView.setAdapter(movieAdapter);;
     }
 
     @Override
@@ -102,16 +111,14 @@ public class MainActivity extends AppCompatActivity implements AbsListView.OnScr
 
             switch (view.getId()) {
                 case R.id.movies_list:
-
                     final int lastItem = firstVisibleItem + visibleItemCount;
-
                     if (lastItem == totalItemCount) {
                         if (preLast != lastItem) {
                             Log.d("Last", "Last");
                             preLast = lastItem;
                         }
-                        page++;
                         PopulateList(page);
+                        page++;
                     }
             }
         }

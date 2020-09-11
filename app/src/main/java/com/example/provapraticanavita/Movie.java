@@ -8,13 +8,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
 
-public class Movie extends AppCompatActivity {
+public class Movie extends AppCompatActivity implements Serializable {
 
-    private Integer popularity, voteCount, movieId, voteAverage;
+    private Integer popularity, voteCount, voteAverage;
+    private int movieId;
     private ArrayList<String> movieGenres;
     private String posterPath, backdropPath, originalLanguage, originalTitle, currentTitle, overview,
             releaseDate;
@@ -25,7 +27,7 @@ public class Movie extends AppCompatActivity {
 
     }
 
-    public Movie(Integer popularity, Integer voteCount, String posterPath, Integer movieId,
+    public Movie(Integer popularity, Integer voteCount, String posterPath, int movieId,
                  String backdropPath, String originalLanguage, String originalTitle,
                  Integer[] genreId, String currentTitle, Integer voteAverage, String overview,
                  String releaseDate){
@@ -121,11 +123,11 @@ public class Movie extends AppCompatActivity {
         this.voteCount = voteCount;
     }
 
-    public Integer getMovieId() {
+    public int getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(Integer movieId) {
+    public void setMovieId(int movieId) {
         this.movieId = movieId;
     }
 

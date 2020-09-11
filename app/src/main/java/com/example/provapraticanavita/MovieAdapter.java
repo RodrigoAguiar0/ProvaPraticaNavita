@@ -2,12 +2,16 @@ package com.example.provapraticanavita;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -24,7 +28,7 @@ import java.util.List;
 public class MovieAdapter extends ArrayAdapter <Movie>{
 
     private Context movieAdapterContext;
-    private List<Movie> moviesList;
+    private final List<Movie> moviesList;
     private TextView movieTitle;
     private TextView releaseDate;
     private ImageView poster;
@@ -37,20 +41,25 @@ public class MovieAdapter extends ArrayAdapter <Movie>{
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItem = convertView;
         if(listItem == null){
             listItem = LayoutInflater.from(movieAdapterContext)
                     .inflate(R.layout.list_movies, parent, false);
-            Movie currentMovie = moviesList.get(position);
         }
+
         poster = (ImageView) listItem.findViewById(R.id.movie_poster);
-        Picasso.get().load("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + moviesList
-                .get(position).getPosterPath()).into(poster);
+        Picasso.get().load("https://image.tmdb.org/t/p/w600_and_h900_bestv2".concat(moviesList
+                .get(position).getPosterPath())).into(poster);
+
         movieTitle = (TextView) listItem.findViewById(R.id.movie_title);
-        movieTitle.setText(moviesList.get(position).getOriginalTitle());
+        movieTitle.setText(moviesList.get(position).getCurrentTitle()
+                .concat(" (")
+                .concat(moviesList.get(position).getOriginalTitle())
+                .concat(")"));
+
         releaseDate = (TextView) listItem.findViewById(R.id.movie_release_date);
-        releaseDate.setText("Data de lançamento: " + moviesList.get(position).getReleaseDate());
+        releaseDate.setText("Data de Lançamento: ".concat(moviesList.get(position).getReleaseDate()));
 
         return listItem;
     }

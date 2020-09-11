@@ -2,5 +2,7 @@
     <string name="app_name">ProvaPraticaNavita</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="toolbar_title">Últimos filmes lançados</string>
+    <string name="toolbar_title">Últimos Filmes Lançados</string>
+    <string name="details">Mais Detalhes</string>
+
 </resources>
