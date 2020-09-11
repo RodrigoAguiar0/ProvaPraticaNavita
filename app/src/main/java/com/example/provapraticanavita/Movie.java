@@ -1,15 +1,29 @@
 package com.example.provapraticanavita;
 
+import android.os.Bundle;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.ArrayList;
+
+
 
 public class Movie extends AppCompatActivity {
 
     private Integer popularity, voteCount, movieId, voteAverage;
-    private JSONArray genreId;
+    private ArrayList<String> movieGenres;
     private String posterPath, backdropPath, originalLanguage, originalTitle, currentTitle, overview,
             releaseDate;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     public Movie(Integer popularity, Integer voteCount, String posterPath, Integer movieId,
                  String backdropPath, String originalLanguage, String originalTitle,
@@ -28,12 +42,75 @@ public class Movie extends AppCompatActivity {
         this.popularity = popularity;
     }
 
-    public void setGenreId(JSONArray genreId) {
-        this.genreId = genreId;
+    public ArrayList<String> getMovieGenres() {
+        return movieGenres;
     }
 
-    public JSONArray getGenreId() {
-        return genreId;
+    public void setMovieGenres(JSONArray listOfGenres) throws JSONException {
+        int genre;
+        movieGenres = new ArrayList();
+        for(int i = 0; i < listOfGenres.length(); i++){
+            genre = listOfGenres.getInt(i);
+            switch(genre) {
+                case 28:
+                    this.movieGenres.add("Ação");
+                    break;
+                case 12:
+                    this.movieGenres.add("Aventura");
+                    break;
+                case 16:
+                    this.movieGenres.add("Animação");
+                    break;
+                case 35:
+                    this.movieGenres.add("Comédia");
+                    break;
+                case 80:
+                    this.movieGenres.add("Criminal");
+                    break;
+                case 99:
+                    this.movieGenres.add("Documentário");
+                    break;
+                case 18:
+                    this.movieGenres.add("Drama");
+                    break;
+                case 10751:
+                    this.movieGenres.add("Para Toda Família");
+                    break;
+                case 14:
+                    this.movieGenres.add("Fantasia");
+                    break;
+                case 36:
+                    this.movieGenres.add("Histórico");
+                    break;
+                case 27:
+                    this.movieGenres.add("Terror");
+                    break;
+                case 10402:
+                    this.movieGenres.add("Musical");
+                    break;
+                case 9648:
+                    this.movieGenres.add("Mistério");
+                    break;
+                case 10749:
+                    this.movieGenres.add("Romance");
+                    break;
+                case 878:
+                    this.movieGenres.add("Ficção Científica");
+                    break;
+                case 10770:
+                    this.movieGenres.add("Filme de TV");
+                    break;
+                case 53:
+                    this.movieGenres.add("Suspense");
+                    break;
+                case 10752:
+                    this.movieGenres.add("Guerra");
+                    break;
+                case 17:
+                    this.movieGenres.add("Faroeste");
+                    break;
+            }
+        }
     }
 
     public Integer getVoteCount() {

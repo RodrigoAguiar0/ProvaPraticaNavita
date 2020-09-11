@@ -13,11 +13,6 @@ import java.util.ArrayList;
 
 public class ControllerDetails extends AppCompatActivity {
 
-//    @Override
-//    protected void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//    }
-
     private ArrayList <Movie> movieList = new ArrayList();
 
     public ArrayList<Movie> jsonParse(JSONArray jsonArray) throws JSONException {
@@ -31,11 +26,11 @@ public class ControllerDetails extends AppCompatActivity {
             movie.setBackdropPath(movieJson.getString("backdrop_path"));
             movie.setOriginalLanguage(movieJson.getString("original_language"));
             movie.setOriginalTitle(movieJson.getString("original_title"));
-            movie.setGenreId(movieJson.getJSONArray("genre_ids"));
-            movie.setTitle(movieJson.getString("title"));
+            movie.setCurrentTitle(movieJson.getString("title"));
             movie.setVoteAverage(movieJson.getInt("vote_average"));
             movie.setOverview(movieJson.getString("overview"));
             movie.setReleaseDate(movieJson.getString("release_date"));
+            movie.setMovieGenres(movieJson.getJSONArray("genre_ids"));
             movieList.add(movie);
             }
         return movieList;
